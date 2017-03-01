@@ -1,4 +1,4 @@
-$(function(){
+jQuery(document).ready(function( $ ) {
   var milestones;
   var circleYears = [];
   $.getJSON('milestones.json',function(data){
