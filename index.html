@@ -14,6 +14,8 @@
       <div class="canvas-container">
         <canvas id="c" width="700" height="700" style="border:1px solid #aaa;"></canvas>
       </div>
+      <div class="accordion-container">
+      </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.6/fabric.min.js"></script>
@@ -23,22 +25,20 @@
 
 
 <script id="accordion-template" type="text/x-handlebars-template">
-  <div class="accordion-container">
     <div class="accordion">
-      {{#each dots.dots}}
+      {{#each years}}
       <div class="accordion-item" data-year="{{this.year}}">
         <div class="accordion-item-title"><a href="#">{{this.year}}</a></div>
         <div class="accordion-text">
           <ul>
-            <li>Something happened</li>
-            <li>Amazing stuff</li>
-            <li>Cool text</li>
+            {{#each this.milestones}}
+            <li>{{this.text}}</li>
+            {{/each}}
           </ul>
         </div>
       </div>
       {{/each}}
     </div>
-  </div>
 </script>
 
 

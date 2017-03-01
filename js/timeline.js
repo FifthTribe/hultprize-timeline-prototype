@@ -35,6 +35,11 @@ $(function(){
         });
         canvas.add(circleDot);
       }
+
+      // Build the accordion html with handlebars
+      var source   = $("#accordion-template").html();
+      var template = Handlebars.compile(source);
+      $('.accordion-container').html(template(milestones));
     }
 
   });
@@ -79,21 +84,6 @@ $(function(){
   }
 
   var hoverTarget, prevHoverTarget;
-
-  function floatingCircle(circle){
-    circle.animate('radius', circle.getRadiusX() == circle.originalRadius ? circle.originalRadius + 5 : circle.originalRadius, {
-      duration: 700,
-      onChange: canvas.renderAll.bind(canvas),
-      onComplete: function(something){
-        floatingCircle(circle);
-      },
-      easing: fabric.util.ease['easeInQuad'],
-      abort: function(){
-        return !circle.hovering;
-      }
-    });
-    canvas.renderAll();
-  }
 
   function circleWaves(circle){
     var objs = canvas.getObjects();
@@ -204,33 +194,33 @@ $(function(){
   });
 
 
-  $('.accordion-item').each(function(){
-    var accordionItem = $(this);
-    $('.accordion-item-title a', accordionItem).on('click',function(){
-      $('.accordion-text').removeClass('on')
-      $('.accordion-text',accordionItem).addClass('on');
-      // highlight canvas object
-      var year = parseInt(accordionItem.attr('data-year'));
-      var objs = canvas.getObjects();
-      for (obj in objs){
-        if ( objs[obj].year === year ){
+  $('.accordion-container').on('click','.accordion-item-title a',function(){
+    console.log('clicked');
+    var accordionItem = $(this).parents('.accordion-item');
+    console.log(accordionItem);
+    $('.accordion-text').removeClass('on')
+    $('.accordion-text',accordionItem).addClass('on');
+    // highlight canvas object
+    var year = parseInt(accordionItem.attr('data-year'));
+    var objs = canvas.getObjects();
+    for (obj in objs){
+      if ( objs[obj].year === year && objs[obj].isCircle === true ){
+        objs[obj].set({
+          strokeWidth: 3,
+          stroke: '#EC008C',
+          clicked: true
+        });
+      } else {
+        if ( objs[obj].isCircle === true ){
           objs[obj].set({
-            strokeWidth: 3,
-            stroke: '#EC008C',
-            clicked: true
+            strokeWidth: 1,
+            stroke: '#CDCDCD',
+            clicked: false
           });
-        } else {
-          if ( objs[obj].isCircle === true ){
-            objs[obj].set({
-              strokeWidth: 1,
-              stroke: '#EC008C',
-              clicked: false
-            });
-          }
         }
-        canvas.renderAll();
       }
-    });
+      canvas.renderAll();
+    }
   });
 
 });
