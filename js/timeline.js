@@ -144,10 +144,11 @@ jQuery(document).ready(function( $ ) {
           },
           easing: fabric.util.ease['easeInQuad']
         });
-      } else {
+      }
+      if ( objs[obj].isCircle === false && objs[obj].clicked === false ){
         objs[obj].set({
           fill: '#CDCDCD'
-        })
+        });
       }
     }
     if ( e.target && e.target.isCircle === true && !e.target.clicked ){
@@ -184,11 +185,13 @@ jQuery(document).ready(function( $ ) {
         if ( objs[obj].isCircle === false){
           if ( objs[obj].year === e.target.year ){
             objs[obj].set({
-              fill: '#EC008C'
+              fill: '#EC008C',
+              clicked: true
             });
           } else {
             objs[obj].set({
-              fill: '#CDCDCD'
+              fill: '#CDCDCD',
+              clicked: false
             });
           }
         }
