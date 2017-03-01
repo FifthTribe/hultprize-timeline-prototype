@@ -195,9 +195,7 @@ $(function(){
 
 
   $('.accordion-container').on('click','.accordion-item-title a',function(){
-    console.log('clicked');
     var accordionItem = $(this).parents('.accordion-item');
-    console.log(accordionItem);
     $('.accordion-text').removeClass('on')
     $('.accordion-text',accordionItem).addClass('on');
     // highlight canvas object
@@ -220,11 +218,13 @@ $(function(){
         } else {
           if ( objs[obj].year === year ){
             objs[obj].set({
-              radius: 5
+              radius: 5,
+              clicked: true
             });
           } else {
             objs[obj].set({
-              radius: 0
+              radius: 0,
+              clicked: false;
             });
           }
         }
