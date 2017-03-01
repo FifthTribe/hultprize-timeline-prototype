@@ -181,7 +181,7 @@ jQuery(document).ready(function( $ ) {
       $('.accordion-text').removeClass('on');
       $('.accordion-item[data-year='+year+'] .accordion-text').addClass('on');
       for (obj in objs){
-        if ( objs[obj].isCircle === false)
+        if ( objs[obj].isCircle === false){
           if ( objs[obj].year === e.target.year ){
             objs[obj].set({
               fill: '#EC008C'
