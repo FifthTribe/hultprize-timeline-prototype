@@ -224,7 +224,7 @@ $(function(){
           } else {
             objs[obj].set({
               radius: 0,
-              clicked: false;
+              clicked: false
             });
           }
         }
