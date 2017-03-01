@@ -217,8 +217,19 @@ $(function(){
             stroke: '#CDCDCD',
             clicked: false
           });
+        } else {
+          if ( objs[obj].year === year ){
+            objs[obj].set({
+              radius: 5
+            });
+          } else {
+            objs[obj].set({
+              radius: 0
+            });
+          }
         }
       }
+
       canvas.renderAll();
     }
   });
