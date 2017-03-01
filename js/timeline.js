@@ -1,8 +1,43 @@
 $(function(){
-  var milestones = $.getJSON( "milestones.json");
-  var totalYears = milestones.years.length;
-  var years = milestones.year;
+  var milestones;
   var circleYears = [];
+  $.getJSON('milestones.json',function(data){
+    milestones = data;
+
+    for (var i = 0; i < milestones.years.length; i++) {
+      var year = milestones.years[i];
+      createCircle(i,year.year);
+      for (var a = 0; a < year.milestones.length; a++){
+        var milestone = year.milestones[a];
+        var cx = canvas.getWidth() / 2;
+        var cy = canvas.getHeight() / 2;
+        var randomAngle = Math.round(fabric.util.getRandomInt(-360, 0)/20) * 20;
+        var angle = fabric.util.degreesToRadians(randomAngle);
+        var radius = i * 26 + 90;
+        var x = cx + radius * Math.cos(angle);
+        var y = cy + radius * Math.sin(angle);
+
+        //create dot on circle
+        var circleDot = new fabric.Circle({
+          radius: 0,
+          left: x,
+          top: y,
+          fill: '#EC008C',
+          stroke: '',
+          hasBorders: false,
+          hasControls: false,
+          lockMovementX: true,
+          lockMovementY: true,
+          year: year.year,
+          text: milestone.text,
+          isCircle: false,
+          clicked: false
+        });
+        canvas.add(circleDot);
+      }
+    }
+
+  });
 
   fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
@@ -12,6 +47,7 @@ $(function(){
     perPixelTargetFind: true,
     targetFindTolerance: 5
   });
+
   function createCircle(i, year) {
     var circleYear = new fabric.Circle({
       radius: 1,
@@ -40,38 +76,6 @@ $(function(){
           },
           easing: fabric.util.ease['easeOutBounce']
         });
-  }
-
-  for (var i = 0; i < totalYears; i++) {
-    createCircle(i,years[i].year);
-    for (var a = 0; a < dots.dots.length; a++){
-      if ( dots.dots[a].year === years[i].year){
-        var cx = canvas.getWidth() / 2;
-        var cy = canvas.getHeight() / 2;
-        var randomAngle = Math.round(fabric.util.getRandomInt(-360, 0)/20) * 20;
-        var angle = fabric.util.degreesToRadians(randomAngle);
-        var radius = i * 26 + 90;
-        var x = cx + radius * Math.cos(angle);
-        var y = cy + radius * Math.sin(angle);
-
-        //create dot on circle
-        var circleDot = new fabric.Circle({
-          radius: 0,
-          left: x,
-          top: y,
-          fill: '#EC008C',
-          stroke: '',
-          hasBorders: false,
-          hasControls: false,
-          lockMovementX: true,
-          lockMovementY: true,
-          year: years[i],
-          isCircle: false,
-          clicked: false
-        });
-        canvas.add(circleDot);
-      }
-    }
   }
 
   var hoverTarget, prevHoverTarget;
