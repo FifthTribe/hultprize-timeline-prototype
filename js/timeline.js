@@ -235,6 +235,7 @@ jQuery(document).ready(function( $ ) {
           circleWaves(objs[obj]);
         }
       }
+      e.target.set({'strokeWidth':'2','stroke':'#EC008C','fill': '#FFFFFF'});
     }
 
     canvas.renderAll();
@@ -263,7 +264,9 @@ jQuery(document).ready(function( $ ) {
       }
       if ( objs[obj].isCircle === false && objs[obj].clicked === false ){
         objs[obj].set({
-          fill: '#CDCDCD'
+          fill: '#CDCDCD',
+          'strokeWidth':'0',
+          'stroke':''
         });
       }
     }
