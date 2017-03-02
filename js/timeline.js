@@ -133,7 +133,7 @@ jQuery(document).ready(function( $ ) {
       });
       canvas.add(circleDot);
       circleDot.animate('opacity', '1', {
-            duration: 500,
+            duration: 3000 + (1000 * i),
             onChange: canvas.renderAll.bind(canvas),
             onComplete: function() {
             },

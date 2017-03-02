@@ -1,46 +1,46 @@
-/* line 1, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 body {
-  font-family: "Lato", sans-serif; }
+  font-family: "Lato", sans-serif;
+}
 
-/* line 5, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .canvas-container {
   float: left;
-  width: 50%; }
+  width: 50%;
+}
 
-/* line 10, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-container {
   float: left;
-  display: inline-block; }
+  display: inline-block;
+}
 
-/* line 15, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion {
-  width: 400px; }
+  width: 400px;
+}
 
-/* line 19, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-text {
-  display: none; }
+  display: none;
+}
 
-/* line 23, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-text.on {
-  display: block; }
+  display: block;
+}
 
-/* line 27, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .clearfix {
   clear: both;
   display: block;
-  width: 100%; }
+  width: 100%;
+}
 
-/* line 36, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion .year,
 .accordion .year-title {
-  display: inline-block; }
+  display: inline-block;
+}
 
-/* line 39, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
-/* line 44, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-item-title {
+<<<<<<< HEAD
   background-color: rgba(249, 249, 249, 0.7);
   border-radius: 50px;
   display: block;
@@ -76,5 +76,47 @@ body {
   .accordion-item-title:hover .year,
   .accordion-item-title:active .year {
     color: #EC008C; }
+=======
+  padding: 10px 20px;
+}
+
+.accordion-item-title .year {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+.accordion-item-title .year-title {
+  padding-left: 10px;
+  color: #545454;
+}
+
+.accordion-item-title .fa {
+  padding-right: 10px;
+  color: transparent;
+  font-size: 0px;
+  transition: all .3s ease;
+}
+
+.accordion-item.on .accordion-item-title,
+.accordion-item-title:hover,
+.accordion-item-title:active {
+  background-color: #f9f9f9;
+  border-radius: 50px;
+}
+
+.accordion-item.on .accordion-item-title .fa,
+.accordion-item-title:hover .fa,
+.accordion-item-title:active .fa {
+  color: #EC008C;
+  font-size: 14px;
+}
+
+.accordion-item.on .accordion-item-title .year,
+.accordion-item-title:hover .year,
+.accordion-item-title:active .year {
+  color: #EC008C;
+}
+>>>>>>> 689ee2faef52958e94e12383e0ce4d7a624fb229
 
 /*# sourceMappingURL=style.css.map */
