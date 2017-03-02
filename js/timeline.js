@@ -1,20 +1,62 @@
 jQuery(document).ready(function( $ ) {
+
+  function isElementInViewport (el) {
+
+      //special bonus for those using jQuery
+      if (typeof jQuery === "function" && el instanceof jQuery) {
+          el = el[0];
+      }
+
+      var rect = el.getBoundingClientRect();
+
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+      );
+  }
+
+  function onVisibilityChange(el, callback) {
+      var old_visible;
+      return function () {
+          var visible = isElementInViewport(el);
+          if (visible != old_visible) {
+              old_visible = visible;
+              if (typeof callback == 'function') {
+                  callback();
+              }
+          }
+      }
+  }
+
+  var handler = onVisibilityChange($('.canvas-container'), function() {
+      /* your code go here */
+      loadCircles();
+  });
+
+
+  //jQuery
+  $(window).on('DOMContentLoaded load resize scroll', handler);
+
+
   var milestones;
   var circleYears = [];
-  $.getJSON('milestones.json',function(data){
-    milestones = data;
+  function loadCircles(){
+    $.getJSON('milestones.json',function(data){
+      milestones = data;
 
-    for (var i = 0; i < milestones.years.length; i++) {
-      var year = milestones.years[i];
-      createCircle(i,year);
+      for (var i = 0; i < milestones.years.length; i++) {
+        var year = milestones.years[i];
+        createCircle(i,year);
 
-      // Build the accordion html with handlebars
-      var source   = $("#accordion-template").html();
-      var template = Handlebars.compile(source);
-      $('.accordion-container').html(template(milestones));
-    }
-
-  });
+        // Build the accordion html with handlebars
+        var source   = $("#accordion-template").html();
+        var template = Handlebars.compile(source);
+        $('.accordion-container').html(template(milestones));
+      }
+    });
+  }
 
   fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
@@ -25,9 +67,12 @@ jQuery(document).ready(function( $ ) {
     targetFindTolerance: 5
   });
 
+  var cx = canvas.getWidth() / 2;
+  var cy = canvas.getHeight() / 2;
+
   function createCircle(i, year) {
     var circleYear = new fabric.Circle({
-      radius: 1,
+      radius: 26 * i + 90,
       left: canvas.getWidth() / 2,
       top: canvas.getHeight() / 2,
       fill: '',
@@ -40,20 +85,19 @@ jQuery(document).ready(function( $ ) {
       year: year.year,
       isCircle: true,
       originalRadius: 26 * i + 90,
-      clicked: false
+      clicked: false,
+      opacity:0
     });
     canvas.add(circleYear);
     circleYears.push(circleYear);
 
-    circleYear.animate('radius', 26 * i + 90, {
-          duration: 3000,
+    circleYear.animate('opacity', '1', {
+          duration: 3000 + (1000 * i),
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function() {
 
             for (var a = 0; a < year.milestones.length; a++){
               var milestone = year.milestones[a];
-              var cx = canvas.getWidth() / 2;
-              var cy = canvas.getHeight() / 2;
               var randomAngle = Math.round(fabric.util.getRandomInt(-360, 0)/20) * 20;
               var angle = fabric.util.degreesToRadians(randomAngle);
               var radius = i * 26 + 90;
@@ -74,9 +118,19 @@ jQuery(document).ready(function( $ ) {
                 year: year.year,
                 text: milestone.text,
                 isCircle: false,
-                clicked: false
+                clicked: false,
+                originalAngle: angle,
+                opacity:0
               });
               canvas.add(circleDot);
+              circleDot.animate('opacity', '1', {
+                    duration: 3000 + (1000 * i),
+                    onChange: canvas.renderAll.bind(canvas),
+                    onComplete: function() {
+                    },
+                    easing: fabric.util.ease['easeOutBounce']
+              });
+
             }
 
           },
