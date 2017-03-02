@@ -43,25 +43,6 @@ jQuery(document).ready(function( $ ) {
   //jQuery
   $(window).on('DOMContentLoaded load resize scroll', handler);
 
-
-  var milestones;
-  var circleYears = [];
-  function loadCircles(){
-    $.getJSON('milestones.json',function(data){
-      milestones = data;
-
-      for (var i = 0; i < milestones.years.length; i++) {
-        var year = milestones.years[i];
-        createCircle(i,year);
-
-        // Build the accordion html with handlebars
-        var source   = $("#accordion-template").html();
-        var template = Handlebars.compile(source);
-        $('.accordion-container').html(template(milestones));
-      }
-    });
-  }
-
   fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
   var canvas = this.__canvas = new fabric.Canvas('c', {
@@ -73,6 +54,46 @@ jQuery(document).ready(function( $ ) {
 
   var cx = canvas.getWidth() / 2;
   var cy = canvas.getHeight() / 2;
+
+
+  var milestones;
+  var circleYears = [];
+  function loadCircles(){
+    $.getJSON('milestones.json',function(data){
+      milestones = data;
+
+      // Build the accordion html with handlebars
+      var source   = $("#accordion-template").html();
+      var template = Handlebars.compile(source);
+      $('.accordion-container').html(template(milestones));
+
+      fabric.Image.fromURL('../img/circle-center.png', function(oImg) {
+        canvas.add(oImg);
+        oImg.center().scale(0.7).set({
+          hasControls: false,
+          hasBorders: false,
+          selection:false,
+          opacity: 0
+        });
+        oImg.animate('opacity', '1', {
+          duration: 2000,
+          onChange: canvas.renderAll.bind(canvas),
+          onComplete: function() {
+
+
+
+          },
+          easing: fabric.util.ease['easeOutBounce']
+        });
+      });
+
+      for (var i = 0; i < milestones.years.length; i++) {
+        var year = milestones.years[i];
+        createCircle(i,year);
+      }
+
+    });
+  }
 
   function createCircle(i, year) {
     var circleYear = new fabric.Circle({
@@ -96,7 +117,7 @@ jQuery(document).ready(function( $ ) {
     circleYears.push(circleYear);
 
     circleYear.animate('opacity', '1', {
-          duration: 3000 + (1000 * i),
+          duration: 3000 + (1500 * i),
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function() {
 
@@ -133,7 +154,7 @@ jQuery(document).ready(function( $ ) {
       });
       canvas.add(circleDot);
       circleDot.animate('opacity', '1', {
-            duration: 3000 + (1000 * i),
+            duration: 3000 + (1500 * i),
             onChange: canvas.renderAll.bind(canvas),
             onComplete: function() {
             },
@@ -297,8 +318,7 @@ jQuery(document).ready(function( $ ) {
     canvas.renderAll();
   });
 
-
-  $('.accordion-container').on('click','.accordion-item-title a',function(){
+  $('.accordion-container').on('click','.accordion-item-title',function(e){
     var accordionItem = $(this).parents('.accordion-item');
     $('.accordion-item').removeClass('on');
     $(accordionItem).addClass('on');
