@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Circles Prototype</title>
-	  <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <a href="tri-circle.html">Tri-Circle Prototype</a>
 
-      <h3>Circles Prototype</h3>
-      <div class="canvas-container">
-        <canvas id="c" width="600" height="600"></canvas>
-      </div>
-      <div class="accordion-container">
-      </div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circles Prototype</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,500,600" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.6/fabric.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-<script src="js/timeline.js"></script>
+<body>
+  <a href="tri-circle.html">Tri-Circle Prototype</a>
+
+  <h3>Circles Prototype</h3>
+  <div class="canvas-container">
+    <canvas id="c" width="600" height="600"></canvas>
+  </div>
+  <div class="accordion-container">
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.6/fabric.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <script src="https://use.fontawesome.com/9a4fa29e38.js"></script>
+
+  <script src="js/timeline.js"></script>
 
 
 
-<script id="accordion-template" type="text/x-handlebars-template">
+  <script id="accordion-template" type="text/x-handlebars-template">
     <div class="accordion">
       {{#each years}}
       <div class="accordion-item" data-year="{{this.year}}">
-        <div class="accordion-item-title"><a href="#">{{this.year}}</a></div>
+        <div class="accordion-item-title"><a class="year" href="#"><i class="fa fa-bullseye" aria-hidden="true"></i>
+{{this.year}}<span class="year-title">{{this.title}}</span></a></div>
         <div class="accordion-text">
           <ul>
             {{#each this.milestones}}
@@ -39,8 +45,11 @@
       </div>
       {{/each}}
     </div>
-</script>
+  </script>
+
+
 
 
 </body>
+
 </html>
