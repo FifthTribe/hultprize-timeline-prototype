@@ -225,7 +225,7 @@ jQuery(document).ready(function( $ ) {
         });
       }
       if ( objs[obj].isCircle === false ){
-        objs[obj].animate({left:cx + (dotBefore.originalRadius) * Math.cos(dotBefore.originalAngle), top:cx + (dotBefore.originalRadius) * Math.sin(dotBefore.originalAngle)}, {
+        objs[obj].animate({left:cx + (objs[obj].originalRadius) * Math.cos(objs[obj].originalAngle), top:cx + (objs[obj].originalRadius) * Math.sin(objs[obj].originalAngle)}, {
           duration: 1000,
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
