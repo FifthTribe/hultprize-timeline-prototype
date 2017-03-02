@@ -42,7 +42,11 @@ body {
 }
 
 .accordion-item-title {
+  background-color: rgba(#f9f9f9, .7);
+  border-radius: 50px;
+  display: block;
   padding: 10px 20px;
+  margin-bottom: 5px;
   .year {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
@@ -63,7 +67,7 @@ body {
 .accordion-item.on .accordion-item-title,
 .accordion-item-title:hover,
 .accordion-item-title:active {
-  background-color: #f9f9f9;
+  background-color: rgba(#EC008C, .1);
   border-radius: 50px;
   .fa {
     color: #EC008C;
