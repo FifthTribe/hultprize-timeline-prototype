@@ -67,7 +67,7 @@ jQuery(document).ready(function( $ ) {
       var template = Handlebars.compile(source);
       $('.accordion-container').html(template(milestones));
 
-      fabric.Image.fromURL('../img/circle-center.png', function(oImg) {
+      fabric.Image.fromURL('img/circle-center.png', function(oImg) {
         canvas.add(oImg);
         oImg.center().scale(0.7).set({
           hasControls: false,
@@ -101,6 +101,7 @@ jQuery(document).ready(function( $ ) {
       left: canvas.getWidth() / 2,
       top: canvas.getHeight() / 2,
       fill: '',
+      strokeWidth: 1,
       stroke: '#CDCDCD',
       hasBorders: false,
       hasControls: false,
@@ -169,7 +170,6 @@ jQuery(document).ready(function( $ ) {
   function circleWaves(circle){
     var objs = canvas.getObjects();
     circle.set({
-      strokeWidth: 3,
       stroke: '#EC008C',
       hovering:true
     });
@@ -186,7 +186,7 @@ jQuery(document).ready(function( $ ) {
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
-          easing: fabric.util.ease['easeInQuad']
+          easing: fabric.util.ease['easeInOutSine']
         });
       }
       if ( objs[obj].year === circle.year-1 && objs[obj].isCircle === true ){
@@ -196,7 +196,7 @@ jQuery(document).ready(function( $ ) {
             onChange: canvas.renderAll.bind(canvas),
             onComplete: function(){
             },
-            easing: fabric.util.ease['easeInQuad']
+            easing: fabric.util.ease['easeInOutSine']
           });
       }
       if ( objs[obj].year === circle.year+1 && objs[obj].isCircle === false ){
@@ -206,7 +206,7 @@ jQuery(document).ready(function( $ ) {
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
-          easing: fabric.util.ease['easeInQuad']
+          easing: fabric.util.ease['easeInOutSine']
         });
       }
       if ( objs[obj].year === circle.year+1 && objs[obj].isCircle === true){
@@ -216,7 +216,7 @@ jQuery(document).ready(function( $ ) {
             onChange: canvas.renderAll.bind(canvas),
             onComplete: function(){
             },
-            easing: fabric.util.ease['easeInQuad']
+            easing: fabric.util.ease['easeInOutSine']
           });
       }
     }
@@ -249,7 +249,7 @@ jQuery(document).ready(function( $ ) {
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
-          easing: fabric.util.ease['easeInQuad']
+          easing: fabric.util.ease['easeInOutSine']
         });
       }
       if ( objs[obj].isCircle === false ){
@@ -258,7 +258,7 @@ jQuery(document).ready(function( $ ) {
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
-          easing: fabric.util.ease['easeInQuad']
+          easing: fabric.util.ease['easeInOutSine']
         });
       }
       if ( objs[obj].isCircle === false && objs[obj].clicked === false ){
@@ -269,7 +269,6 @@ jQuery(document).ready(function( $ ) {
     }
     if ( e.target && e.target.isCircle === true && !e.target.clicked ){
       e.target.set({
-        strokeWidth: 1,
         stroke: '#CDCDCD',
         hovering:false
       });
@@ -282,7 +281,6 @@ jQuery(document).ready(function( $ ) {
     for (obj in objs){
       if ( objs[obj].isCircle === true ){
         objs[obj].set({
-          strokeWidth: 1,
           stroke: '#CDCDCD',
           clicked: false
         });
@@ -290,7 +288,6 @@ jQuery(document).ready(function( $ ) {
     }
     if ( e.target && e.target.isCircle === true ){
       e.target.set({
-        strokeWidth: 3,
         stroke: '#EC008C',
         clicked: true
       });
@@ -330,14 +327,12 @@ jQuery(document).ready(function( $ ) {
     for (obj in objs){
       if ( objs[obj].year === year && objs[obj].isCircle === true ){
         objs[obj].set({
-          strokeWidth: 3,
           stroke: '#EC008C',
           clicked: true
         });
       } else {
         if ( objs[obj].isCircle === true ){
           objs[obj].set({
-            strokeWidth: 1,
             stroke: '#CDCDCD',
             clicked: false
           });
