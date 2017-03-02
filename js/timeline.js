@@ -297,8 +297,8 @@ jQuery(document).ready(function( $ ) {
     canvas.renderAll();
   });
 
-
-  $('.accordion-container').on('click','.accordion-item-title a',function(){
+console.log('testing');
+  $('.accordion-container').on('click','.accordion-item-title',function(e){
     var accordionItem = $(this).parents('.accordion-item');
     $('.accordion-item').removeClass('on');
     $(accordionItem).addClass('on');
