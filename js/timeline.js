@@ -251,7 +251,13 @@ jQuery(document).ready(function( $ ) {
           onComplete: function(){
           },
           easing: fabric.util.ease['easeInOutSine']
-        });
+        })
+        if ( !objs[obj].clicked ){
+          objs[obj].set({
+            stroke: '#CDCDCD',
+            hovering:false
+          });
+        }
       }
       if ( objs[obj].isCircle === false ){
         objs[obj].animate({left:cx + (objs[obj].originalRadius) * Math.cos(objs[obj].originalAngle), top:cx + (objs[obj].originalRadius) * Math.sin(objs[obj].originalAngle)}, {
@@ -269,12 +275,6 @@ jQuery(document).ready(function( $ ) {
           'stroke':''
         });
       }
-    }
-    if ( e.target && !e.target.clicked ){
-      e.target.set({
-        stroke: '#CDCDCD',
-        hovering:false
-      });
     }
     canvas.renderAll();
   });
