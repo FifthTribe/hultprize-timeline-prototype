@@ -45,24 +45,32 @@ body {
   /* line 46, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
   .accordion-item-title .year {
     font-family: "Montserrat", sans-serif;
-    font-size: 16px; }
-  /* line 50, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+    font-size: 16px;
+    color: black; }
+  /* line 51, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
   .accordion-item-title .year-title {
-    padding-left: 10px; }
-  /* line 53, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+    padding-left: 10px;
+    color: #545454; }
+  /* line 55, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
   .accordion-item-title .fa {
     padding-right: 10px;
     color: transparent;
     font-size: 0px;
     transition: all 0.3s ease; }
 
-/* line 61, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-.accordion-item-title:hover, .accordion-item-title:active {
+/* line 64, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+.accordion-item-title:hover,
+.accordion-item-title:active {
   background-color: #f9f9f9;
   border-radius: 50px; }
-  /* line 64, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item-title:hover .fa, .accordion-item-title:active .fa {
-    color: magenta;
+  /* line 67, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+  .accordion-item-title:hover .fa,
+  .accordion-item-title:active .fa {
+    color: #EC008C;
     font-size: 14px; }
+  /* line 71, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+  .accordion-item-title:hover .year,
+  .accordion-item-title:active .year {
+    color: #EC008C; }
 
 /*# sourceMappingURL=style.css.map */

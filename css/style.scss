@@ -46,9 +46,11 @@ body {
   .year {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
+    color: black;
   }
   .year-title {
     padding-left: 10px;
+    color: #545454;
   }
   .fa {
     padding-right: 10px;
@@ -58,11 +60,15 @@ body {
   }
 }
 
-.accordion-item-title:hover, .accordion-item-title:active {
+.accordion-item-title:hover,
+.accordion-item-title:active {
   background-color: #f9f9f9;
   border-radius: 50px;
   .fa {
-    color: magenta;
+    color: #EC008C;
     font-size: 14px;
+  }
+  .year {
+    color: #EC008C;
   }
 }
