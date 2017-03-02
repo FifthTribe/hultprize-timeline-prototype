@@ -35,9 +35,9 @@
         <a class="accordion-item-title" href="#"><span class="year"><i class="fa fa-bullseye" aria-hidden="true"></i>
 {{this.year}}<span></span><span class="year-title">{{this.title}}</span></a>
         <div class="accordion-text">
-          <ul>
+          <ul class="animation extend">
             {{#each this.milestones}}
-            <li>{{this.text}}</li>
+            <li class="animate fadeInUp"><i class="fa fa-angle-right" aria-hidden="true"></i>{{this.text}}</li>
             {{/each}}
           </ul>
         </div>
