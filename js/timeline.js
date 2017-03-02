@@ -270,7 +270,7 @@ jQuery(document).ready(function( $ ) {
         });
       }
     }
-    if ( e.target && e.target.isCircle === true && !e.target.clicked ){
+    if ( e.target && !e.target.clicked ){
       e.target.set({
         stroke: '#CDCDCD',
         hovering:false
