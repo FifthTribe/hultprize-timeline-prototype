@@ -147,7 +147,11 @@ jQuery(document).ready(function( $ ) {
 
   function circleWaves(circle){
     var objs = canvas.getObjects();
-
+    circle.set({
+      strokeWidth: 3,
+      stroke: '#EC008C',
+      hovering:true
+    });
     for (obj in objs){
       if ( objs[obj].year === circle.year && objs[obj].isCircle === false ){
         objs[obj].set({
@@ -201,12 +205,15 @@ jQuery(document).ready(function( $ ) {
 
   canvas.on('mouse:over', function(e) {
     if ( e.target && e.target.isCircle === true ){
-      e.target.set({
-        strokeWidth: 3,
-        stroke: '#EC008C',
-        hovering:true
-      });
       circleWaves(e.target);
+    }
+    if ( e.target && e.target.isCircle === false ){
+      var objs = canvas.getObjects();
+      for ( obj in objs ){
+        if ( objs[obj].year === e.target.year && objs[obj].isCircle === true) {
+          circleWaves(objs[obj]);
+        }
+      }
     }
 
     canvas.renderAll();
@@ -294,7 +301,7 @@ jQuery(document).ready(function( $ ) {
   $('.accordion-container').on('click','.accordion-item-title a',function(){
     var accordionItem = $(this).parents('.accordion-item');
     $('.accordion-item').removeClass('on');
-    accordionItem.addClass('on');
+    $(accordionItem).addClass('on');
     $('.accordion-text').removeClass('on')
     $('.accordion-text',accordionItem).addClass('on');
     // highlight canvas object
