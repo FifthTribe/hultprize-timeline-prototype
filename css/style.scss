@@ -1,0 +1,68 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.canvas-container {
+  float: left;
+  width: 50%;
+}
+
+.accordion-container {
+  float: left;
+  display: inline-block;
+}
+
+.accordion {
+  width: 400px;
+}
+
+.accordion-text {
+  display: none;
+}
+
+.accordion-text.on {
+  display: block;
+}
+
+.clearfix {
+  clear: both;
+  display: block;
+  width: 100%;
+}
+
+//ACCORDION
+.accordion {
+  .year,
+  .year-title {
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.accordion-item-title {
+  padding: 10px 20px;
+  .year {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+  }
+  .year-title {
+    padding-left: 10px;
+  }
+  .fa {
+    padding-right: 10px;
+    color: transparent;
+    font-size: 0px;
+    transition: all .3s ease;
+  }
+}
+
+.accordion-item-title:hover, .accordion-item-title:active {
+  background-color: #f9f9f9;
+  border-radius: 50px;
+  .fa {
+    color: magenta;
+    font-size: 14px;
+  }
+}
