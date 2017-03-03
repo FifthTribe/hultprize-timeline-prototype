@@ -49,7 +49,8 @@ jQuery(document).ready(function( $ ) {
     hoverCursor: 'pointer',
     selection: false,
     perPixelTargetFind: true,
-    targetFindTolerance: 5
+    targetFindTolerance: 5,
+    renderOnAddRemove: false
   });
 
   var cx = canvas.getWidth() / 2;
@@ -159,7 +160,7 @@ jQuery(document).ready(function( $ ) {
       canvas.add(circleDot);
       circleDot.animate('opacity', '1', {
             duration: 3000 + (1500 * i),
-            onChange: canvas.renderAll.bind(canvas),
+            //onChange: canvas.renderAll.bind(canvas),
             onComplete: function() {
             },
             easing: fabric.util.ease['easeOutBounce']
@@ -265,7 +266,7 @@ jQuery(document).ready(function( $ ) {
       if ( objs[obj].isCircle === false ){
         objs[obj].animate({left:cx + (objs[obj].originalRadius) * Math.cos(objs[obj].originalAngle), top:cx + (objs[obj].originalRadius) * Math.sin(objs[obj].originalAngle)}, {
           duration: 1000,
-          onChange: canvas.renderAll.bind(canvas),
+          //onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
           easing: fabric.util.ease['easeInOutSine']
