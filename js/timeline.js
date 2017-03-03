@@ -359,10 +359,12 @@ jQuery(document).ready(function( $ ) {
               clicked: true
             });
           } else {
-            objs[obj].set({
-              fill: '#CDCDCD',
-              clicked: false
-            });
+            if ( objs[obj].clicked === false ){
+              objs[obj].set({
+                fill: '#CDCDCD',
+                clicked: false
+              });
+            }
           }
         }
       }
