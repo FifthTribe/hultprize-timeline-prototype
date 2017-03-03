@@ -13,7 +13,7 @@ body {
 }
 
 .accordion {
-  width: 400px;
+  width: 500px;
 }
 
 .accordion-text {
@@ -42,7 +42,7 @@ body {
 }
 
 .accordion-item-title {
-  background-color: rgba(#f9f9f9, .7);
+  background-color: #f9f9f9;
   border-radius: 50px;
   display: block;
   padding: 10px 20px;
@@ -90,8 +90,11 @@ body {
         padding-right: 10px;
       }
     }
-    li:last-child {
+    li:nth-child(3n) {
       border-bottom: none;
+    }
+    li:nth-child(n+4) {
+      display: none;
     }
   }
 }
@@ -132,4 +135,16 @@ body {
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+}
+
+.text-label {
+  position:absolute;
+  top:-9999px;
+  left:-9999px;
+  border-radius: 5px;
+  border: 1px solid #EC008C;
+  padding:10px;
+  z-index: 10000;
+  max-width:300px;
+  background-color:#FFF2FA;
 }

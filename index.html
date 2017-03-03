@@ -17,16 +17,10 @@
 
   <div class="canvas-container">
     <canvas id="c" width="600" height="600"></canvas>
+    <span class="text-label"></span>
   </div>
   <div class="accordion-container">
   </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.6/fabric.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-  <script src="https://use.fontawesome.com/9a4fa29e38.js"></script>
-
-  <script src="js/timeline.js"></script>
 
   <script id="accordion-template" type="text/x-handlebars-template">
     <div class="accordion">
@@ -36,9 +30,9 @@
 {{this.year}}<span></span><span class="year-title">{{this.title}}</span></a>
         <div class="accordion-text">
           <ul class="animation extend">
-            {{#each this.milestones}}
+            {{#listFirstThree this.milestones}}
             <li class="animate fadeInUp"><i class="fa fa-angle-right" aria-hidden="true"></i>{{this.text}}</li>
-            {{/each}}
+            {{/listFirstThree}}
           </ul>
         </div>
       </div>
@@ -47,7 +41,12 @@
   </script>
 
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.6/fabric.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <script src="https://use.fontawesome.com/9a4fa29e38.js"></script>
 
+  <script src="js/timeline.js"></script>
 
 </body>
 

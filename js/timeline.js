@@ -32,7 +32,6 @@ jQuery(document).ready(function( $ ) {
 
   var loaded = false;
   var handler = onVisibilityChange($('.canvas-container'), function() {
-      /* your code go here */
       if ( !loaded ){
         loaded = true;
         loadCircles();
@@ -40,7 +39,6 @@ jQuery(document).ready(function( $ ) {
   });
 
 
-  //jQuery
   $(window).on('DOMContentLoaded load resize scroll', handler);
 
   fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
@@ -49,7 +47,8 @@ jQuery(document).ready(function( $ ) {
     hoverCursor: 'pointer',
     selection: false,
     perPixelTargetFind: true,
-    targetFindTolerance: 5
+    targetFindTolerance: 5,
+    renderOnAddRemove: false
   });
 
   var cx = canvas.getWidth() / 2;
@@ -73,15 +72,15 @@ jQuery(document).ready(function( $ ) {
           hasControls: false,
           hasBorders: false,
           selection:false,
-          opacity: 0
+          opacity: 0,
+          lockRotation: true,
+          lockMovementX: true,
+          lockMovementY: true
         });
         oImg.animate('opacity', '1', {
           duration: 2000,
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function() {
-
-
-
           },
           easing: fabric.util.ease['easeOutBounce']
         });
@@ -156,7 +155,7 @@ jQuery(document).ready(function( $ ) {
       canvas.add(circleDot);
       circleDot.animate('opacity', '1', {
             duration: 3000 + (1500 * i),
-            onChange: canvas.renderAll.bind(canvas),
+            //onChange: canvas.renderAll.bind(canvas),
             onComplete: function() {
             },
             easing: fabric.util.ease['easeOutBounce']
@@ -235,7 +234,11 @@ jQuery(document).ready(function( $ ) {
           circleWaves(objs[obj]);
         }
       }
-      e.target.set({'strokeWidth':'2','stroke':'#EC008C','fill': '#FFFFFF'});
+      e.target.set({
+        'strokeWidth':'2',
+        'stroke':'#EC008C',
+        'fill': '#FFFFFF'
+      });
     }
 
     canvas.renderAll();
@@ -262,7 +265,7 @@ jQuery(document).ready(function( $ ) {
       if ( objs[obj].isCircle === false ){
         objs[obj].animate({left:cx + (objs[obj].originalRadius) * Math.cos(objs[obj].originalAngle), top:cx + (objs[obj].originalRadius) * Math.sin(objs[obj].originalAngle)}, {
           duration: 1000,
-          onChange: canvas.renderAll.bind(canvas),
+          //onChange: canvas.renderAll.bind(canvas),
           onComplete: function(){
           },
           easing: fabric.util.ease['easeInOutSine']
@@ -281,6 +284,9 @@ jQuery(document).ready(function( $ ) {
 
   canvas.on('mouse:down', function(e) {
     var objs = canvas.getObjects();
+
+    $('.text-label').hide();
+
     for (obj in objs){
       if ( objs[obj].isCircle === true ){
         objs[obj].set({
@@ -288,12 +294,42 @@ jQuery(document).ready(function( $ ) {
           clicked: false
         });
       }
+      if ( objs[obj].isCircle === false ){
+        objs[obj].set({
+          fill: '#CDCDCD',
+          strokeWidth: 0,
+          stroke: null,
+          clicked: false
+        })
+      }
     }
-    if ( e.target && e.target.isCircle === true ){
-      e.target.set({
-        stroke: '#EC008C',
-        clicked: true
-      });
+    if ( e.target ){
+      if ( e.target.isCircle === true){
+        e.target.set({
+          stroke: '#EC008C',
+          clicked: true
+        });
+      }
+      if ( e.target.isCircle === false ){
+        e.target.set({
+          'strokeWidth':'2',
+          'stroke':'#EC008C',
+          'fill': '#FFFFFF',
+          clicked: true
+        });
+        for (obj in objs){
+          if ( objs[obj].year === e.target.year && objs[obj].isCircle === true) {
+            objs[obj].set({
+              stroke: '#EC008C',
+              clicked: true
+            });
+          }
+        }
+
+        $('.text-label').html(e.target.text).css('left',e.target.left + 20).css('top',e.target.top - 20).show();
+
+      }
+
       var year = e.target.year;
       $('.accordion-item').removeClass('on');
       $('.accordion-item[data-year='+year+']').addClass('on');
@@ -301,16 +337,18 @@ jQuery(document).ready(function( $ ) {
       $('.accordion-item[data-year='+year+'] .accordion-text').addClass('on');
       for (obj in objs){
         if ( objs[obj].isCircle === false){
-          if ( objs[obj].year === e.target.year ){
+          if ( objs[obj].year === e.target.year && objs[obj].clicked === false){
             objs[obj].set({
               fill: '#EC008C',
               clicked: true
             });
           } else {
-            objs[obj].set({
-              fill: '#CDCDCD',
-              clicked: false
-            });
+            if ( objs[obj].clicked === false ){
+              objs[obj].set({
+                fill: '#CDCDCD',
+                clicked: false
+              });
+            }
           }
         }
       }
@@ -319,6 +357,7 @@ jQuery(document).ready(function( $ ) {
   });
 
   $('.accordion-container').on('click','.accordion-item-title',function(e){
+    $('.text-label').hide();    
     var accordionItem = $(this).parents('.accordion-item');
     $('.accordion-item').removeClass('on');
     $(accordionItem).addClass('on');
@@ -356,6 +395,14 @@ jQuery(document).ready(function( $ ) {
 
       canvas.renderAll();
     }
+  });
+
+  Handlebars.registerHelper('listFirstThree',function (context, options) {
+    var ret = "";
+    for (var i = 0, j = 3; i < j; i++) {
+      ret = ret + options.fn(context[i]);
+    }
+    return ret;
   });
 
 });

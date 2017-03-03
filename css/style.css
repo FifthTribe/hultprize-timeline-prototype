@@ -1,129 +1,159 @@
-/* line 1, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 body {
-  font-family: "Lato", sans-serif; }
+  font-family: "Lato", sans-serif;
+}
 
-/* line 5, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .canvas-container {
   float: left;
-  width: 50%; }
+  width: 50%;
+}
 
-/* line 10, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-container {
   float: left;
-  display: inline-block; }
+  display: inline-block;
+}
 
-/* line 15, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion {
-  width: 400px; }
+  width: 500px;
+}
 
-/* line 19, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-text {
-  display: none; }
+  display: none;
+}
 
-/* line 23, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-text.on {
-  display: block; }
+  display: block;
+}
 
-/* line 27, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .clearfix {
   clear: both;
   display: block;
-  width: 100%; }
+  width: 100%;
+}
 
-/* line 36, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion .year,
 .accordion .year-title {
-  display: inline-block; }
+  display: inline-block;
+}
 
-/* line 39, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
-/* line 44, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-item-title {
-  background-color: rgba(249, 249, 249, 0.7);
+  background-color: #f9f9f9;
   border-radius: 50px;
   display: block;
   padding: 10px 20px;
-  margin-bottom: 5px; }
-  /* line 50, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item-title .year {
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    color: black; }
-  /* line 55, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item-title .year-title {
-    padding-left: 10px;
-    color: #545454; }
-  /* line 59, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item-title .fa {
-    padding-right: 10px;
-    color: transparent;
-    font-size: 0px;
-    transition: all 0.3s ease; }
+  margin-bottom: 5px;
+}
 
-/* line 68, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+.accordion-item-title .year {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+.accordion-item-title .year-title {
+  padding-left: 10px;
+  color: #545454;
+}
+
+.accordion-item-title .fa {
+  padding-right: 10px;
+  color: transparent;
+  font-size: 0px;
+  transition: all .3s ease;
+}
+
 .accordion-item.on .accordion-item-title,
 .accordion-item-title:hover {
   background-color: rgba(236, 0, 140, 0.1);
-  border-radius: 50px; }
-  /* line 71, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item.on .accordion-item-title .fa,
-  .accordion-item-title:hover .fa {
-    color: #EC008C;
-    font-size: 14px; }
-  /* line 75, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-item.on .accordion-item-title .year,
-  .accordion-item-title:hover .year {
-    color: #EC008C; }
+  border-radius: 50px;
+}
 
-/* line 81, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+.accordion-item.on .accordion-item-title .fa,
+.accordion-item-title:hover .fa {
+  color: #EC008C;
+  font-size: 14px;
+}
+
+.accordion-item.on .accordion-item-title .year,
+.accordion-item-title:hover .year {
+  color: #EC008C;
+}
+
 .accordion-text ul {
-  list-style-type: none; }
-  /* line 83, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-text ul li {
-    padding: 5px 20px;
-    margin: 0px 0px 10px 0px;
-    padding: 10px 0px;
-    border-bottom: 1px solid #eaeaea; }
-    /* line 88, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-    .accordion-text ul li .fa {
-      color: #EC008C;
-      padding-right: 10px; }
-  /* line 93, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-text ul li:last-child {
-    border-bottom: none; }
+  list-style-type: none;
+}
 
-/* line 99, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+.accordion-text ul li {
+  padding: 5px 20px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.accordion-text ul li .fa {
+  color: #EC008C;
+  padding-right: 10px;
+}
+
+.accordion-text ul li:nth-child(3n) {
+  border-bottom: none;
+}
+
+.accordion-text ul li:nth-child(n+4) {
+  display: none;
+}
+
 .animate {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; }
+  animation-fill-mode: both;
+}
 
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 20%, 0);
-    transform: translate3d(0, 20%, 0); }
+    transform: translate3d(0, 20%, 0);
+  }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none; } }
+    transform: none;
+  }
+}
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 20%, 0);
-    transform: translate3d(0, 20%, 0); }
+    transform: translate3d(0, 20%, 0);
+  }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none; } }
+    transform: none;
+  }
+}
 
-/* line 132, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp; }
+  animation-name: fadeInUp;
+}
+
+.text-label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  border-radius: 5px;
+  border: 1px solid #EC008C;
+  padding: 10px;
+  z-index: 10000;
+  max-width: 300px;
+  background-color: #FFF2FA;
+}
 
 /*# sourceMappingURL=style.css.map */
