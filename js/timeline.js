@@ -32,7 +32,6 @@ jQuery(document).ready(function( $ ) {
 
   var loaded = false;
   var handler = onVisibilityChange($('.canvas-container'), function() {
-      /* your code go here */
       if ( !loaded ){
         loaded = true;
         loadCircles();
@@ -40,7 +39,6 @@ jQuery(document).ready(function( $ ) {
   });
 
 
-  //jQuery
   $(window).on('DOMContentLoaded load resize scroll', handler);
 
   fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
@@ -89,13 +87,22 @@ jQuery(document).ready(function( $ ) {
         });
       });
 
-      dotLabel = new fabric.Text('', {
-        fill: '#fff',
+      dotLabel = new fabric.Textbox('', {
+        left: -100,
+        top: -100,
+        fill: '#000000',
+        backgroundColor: 'rgb(253, 227, 243)',
         fontSize: 16,
         fontFamily: 'Open Sans',
-        textBackgroundColor: '#002244'
+        originX: 'center',
+        originY: 'center',
+        width:250,
+        textAlign: 'center',
+        cornerSize: 60,
+        cornerStyle: 'circle'
       });
       canvas.add(dotLabel);
+      canvas.bringToFront(dotLabel);
 
       for (var i = 0; i < milestones.years.length; i++) {
         var year = milestones.years[i];
@@ -316,7 +323,12 @@ jQuery(document).ready(function( $ ) {
         });
       }
       if ( e.target.isCircle === false ){
-        e.target.set({'strokeWidth':'2','stroke':'#EC008C','fill': '#FFFFFF'});
+        e.target.set({
+          'strokeWidth':'2',
+          'stroke':'#EC008C',
+          'fill': '#FFFFFF',
+          clicked: true
+        });
         for (obj in objs){
           if ( objs[obj].year === e.target.year && objs[obj].isCircle === true) {
             objs[obj].set({
@@ -327,10 +339,11 @@ jQuery(document).ready(function( $ ) {
         }
 
         dotLabel.set({
-          left: e.target.left + 50,
-          top: e.target.top + 20,
+          left: e.target.left + 150,
+          top: e.target.top - 20,
           text: e.target.text
         });
+
       }
 
       var year = e.target.year;
@@ -340,7 +353,7 @@ jQuery(document).ready(function( $ ) {
       $('.accordion-item[data-year='+year+'] .accordion-text').addClass('on');
       for (obj in objs){
         if ( objs[obj].isCircle === false){
-          if ( objs[obj].year === e.target.year ){
+          if ( objs[obj].year === e.target.year && objs[obj].clicked === false){
             objs[obj].set({
               fill: '#EC008C',
               clicked: true
@@ -354,6 +367,7 @@ jQuery(document).ready(function( $ ) {
         }
       }
     }
+    canvas.bringToFront(dotLabel);
     canvas.renderAll();
   });
 
