@@ -34,25 +34,6 @@
 			}, {
                     "text": "Bill Clinton Parnters with the Hult Prize"
 			}
-
-
-<< << << < HEAD
-      ]
-    },
-        {
-            "year": 2011,
-            "title": "Over 5,000 Applicants Compete",
-            "milestones": [
-                {
-                    "text": "Hult Prize announces US$1M Prize for social entrepreneurship"
-        },
-                {
-                    "text": "First Mexican team participates in Hult Prize opening the pathway for entry into Latin America"
-          },
-                {
-                    "text": "Hult Prize funds m.Paani, today's largest loyalt and rewards program focused on India's BOP"
-          },
-=== === =
 		]
 	}, {
             "year": 2011,
@@ -64,8 +45,6 @@
 			}, {
                     "text": "Hult Prize funds m.Paani, today's largest loyalt and rewards program focused on India's BOP"
 			},
->>> >>> > origin / master
-
                 {
                     "text": "Over 5,000 Applicants Compete"
 			},
@@ -77,10 +56,6 @@
                 {
                     "text": "Energy Challenge asks students to eliminate the use of the kerosene lamp by 2020."
 			}
-
-
-
-<< << << < HEAD
       ]
     },
         {
@@ -292,92 +267,4 @@
       ]
     }
   ]
-} === === = ]
-}, {
-    "year": 2012,
-    "title": "Founded",
-    "milestones": [{
-        "text": "2012 Sunny Money wins Hult Prize Energy Challenge asking young people to eliminate the use of the kerosene lamp by 2020.  Today, Sunny Money is one of Africa's largest solar light suppliers."
-		}, {
-        "text": "Hult Prize Named one of the top 5 ideas changing the world on cover of TIME"
-		}, {
-        "text": "Bill Clinton moves Hult Prize as opening Clinton Global Initiative Annual MeetingHult Prize launches ground-breaking business incubator"
-		}, {
-        "text": "Hult Prize launches ground-breaking business incubator"
-		}, {
-        "text": "20K applications"
-		}]
-}, {
-    "year": 2013,
-    "title": "Founded",
-    "milestones": [{
-        "text": "Breakthrough food challenge issued, authored by Hult Prize team"
-		}, {
-        "text": "Aspire Food Group wins 1M Hult Prize, UN Calls \"a company which can end food poverty\""
-		}, {
-        "text": "Hult Prize Opens dedicated Accelerator space in Cambridge MA"
-		}, {
-        "text": "Hult Prize receives 10K application"
-		}, {
-        "text": "25K applications"
-		}, {
-        "text": "Hult Prize CEO selected to World Economic Forum's Expert Entreprenuers Network"
-		}]
-}, {
-    "year": 2014,
-    "title": "Founded",
-    "milestones": [{
-        "text": "Hult Prize@ - a new breakthrough on-campus program is launched "
-		}, {
-        "text": "Nano Health wins Hult Prize"
-		}, {
-        "text": "On-campus particpation skyrockets to 100 universities"
-		}, {
-        "text": "50K applications"
-		}, {
-        "text": "Hult Prize opens offices in Sao Paulo Brazil"
-		}, {
-        "text": "Hult Prize establishes Dubai offices"
-		}, {
-        "text": "First campus and national director Hult Prize Retreat hosted at Ashirdge Castle, UK"
-		}]
-}, {
-    "year": 2015,
-    "title": "Founded",
-    "milestones": [{
-        "text": "2500 Mexican University students particpate in Hult Prize"
-		}, {
-        "text": "National Program launches in Palestine, Gaza, Colombia, "
-		}, {
-        "text": "Hult Prize opens in People's Square, Shanghai, China"
-		}, {
-        "text": "Uber becomes national sponsor in Australia"
-		}, {
-        "text": "Impact wins the 2015 Hult Prize launches playcares.com"
-		}]
-}, {
-    "year": 2016,
-    "title": "Founded",
-    "milestones": [{
-        "text": "Ahmad becomes Esquire Magazine Entrepreneur of the Year"
-		}, {
-        "text": "Aspire Food becomes largest insect protein company in world"
-		}, {
-        "text": "Hult Prize National Program Pilots in Mexico"
-		}, {
-        "text": "Egypt National Program Opens"
-		}, {
-        "text": "Hult Prize Launches National Programs in Vietnam, Chilie, Peru, "
-		}, {
-        "text": "Hult Prize National Program launched in Jordan"
-		}, {
-        "text": "Hult Prize partners with Harvard Business School to Launch 6 part Case Study on Crowd, Impact and Philanthropy"
-		}, {
-        "text": "Hult Prize moves Boston based accelerator to Amman, Jordan"
-		}, {
-        "text": "Hult Prize becomes official start to UN Week, moves global finals into UNGA"
-		}, {
-        "text": "Impact selected to be the official roll out partner of South Africa's early childhood learning program"
-		}]
-}]
-} >>> >>> > origin / master
+}
