@@ -360,15 +360,23 @@ jQuery(document).ready(function( $ ) {
     e.preventDefault();
     $('.text-label').hide();
     var accordionItem = $(this).parents('.accordion-item');
-    $('.accordion-item').removeClass('on');
-    $(accordionItem).addClass('on');
-    $('.accordion-text').removeClass('on')
-    $('.accordion-text',accordionItem).addClass('on');
+
+    if ( !$(accordionItem).hasClass('on') ){
+      $('.accordion-item').removeClass('on');
+      $('.accordion-text').removeClass('on');
+      $(accordionItem).addClass('on');
+      $('.accordion-text',accordionItem).addClass('on');
+      console.log('test');
+    } else {
+      $('.accordion-item').removeClass('on');
+      $('.accordion-text').removeClass('on');
+    }
+
     // highlight canvas object
     var year = parseInt(accordionItem.attr('data-year'));
     var objs = canvas.getObjects();
     for (obj in objs){
-      if ( objs[obj].year === year && objs[obj].isCircle === true ){
+      if ( objs[obj].year === year && objs[obj].isCircle === true && $(accordionItem).hasClass('on') ){
         objs[obj].set({
           stroke: '#EC008C',
           clicked: true
@@ -380,7 +388,7 @@ jQuery(document).ready(function( $ ) {
             clicked: false
           });
         } else {
-          if ( objs[obj].year === year ){
+          if ( objs[obj].year === year && $(accordionItem).hasClass('on') ){
             objs[obj].set({
               fill: '#EC008C',
               clicked: true
@@ -393,7 +401,6 @@ jQuery(document).ready(function( $ ) {
           }
         }
       }
-
       canvas.renderAll();
     }
   });
