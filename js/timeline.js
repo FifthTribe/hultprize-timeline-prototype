@@ -291,12 +291,34 @@ jQuery(document).ready(function( $ ) {
           clicked: false
         });
       }
+      if ( objs[obj].isCircle === false ){
+        objs[obj].set({
+          fill: '#CDCDCD',
+          strokeWidth: 0,
+          stroke: null,
+          clicked: false
+        })
+      }
     }
-    if ( e.target && e.target.isCircle === true ){
-      e.target.set({
-        stroke: '#EC008C',
-        clicked: true
-      });
+    if ( e.target ){
+      if ( e.target.isCircle === true){
+        e.target.set({
+          stroke: '#EC008C',
+          clicked: true
+        });
+      }
+      if ( e.target.isCircle === false ){
+        e.target.set({'strokeWidth':'2','stroke':'#EC008C','fill': '#FFFFFF'});
+        for (obj in objs){
+          if ( objs[obj].year === e.target.year && objs[obj].isCircle === true) {
+            objs[obj].set({
+              stroke: '#EC008C',
+              clicked: true
+            });
+          }
+        }
+      }
+
       var year = e.target.year;
       $('.accordion-item').removeClass('on');
       $('.accordion-item[data-year='+year+']').addClass('on');
@@ -367,6 +389,6 @@ jQuery(document).ready(function( $ ) {
       ret = ret + options.fn(context[i]);
     }
     return ret;
-  });  
+  });
 
 });
