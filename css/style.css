@@ -24,12 +24,6 @@ body {
   display: block;
 }
 
-.clearfix {
-  clear: both;
-  display: block;
-  width: 100%;
-}
-
 .accordion .year,
 .accordion .year-title {
   display: inline-block;
