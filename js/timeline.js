@@ -73,7 +73,10 @@ jQuery(document).ready(function( $ ) {
           hasControls: false,
           hasBorders: false,
           selection:false,
-          opacity: 0
+          opacity: 0,
+          lockRotation: true,
+          lockMovementX: true,
+          lockMovementY: true
         });
         oImg.animate('opacity', '1', {
           duration: 2000,
@@ -357,5 +360,13 @@ jQuery(document).ready(function( $ ) {
       canvas.renderAll();
     }
   });
+
+  Handlebars.registerHelper('listFirstThree',function (context, options) {
+    var ret = "";
+    for (var i = 0, j = 3; i < j; i++) {
+      ret = ret + options.fn(context[i]);
+    }
+    return ret;
+  });  
 
 });

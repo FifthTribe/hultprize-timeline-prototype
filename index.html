@@ -36,9 +36,9 @@
 {{this.year}}<span></span><span class="year-title">{{this.title}}</span></a>
         <div class="accordion-text">
           <ul class="animation extend">
-            {{#each this.milestones}}
+            {{#listFirstThree this.milestones}}
             <li class="animate fadeInUp"><i class="fa fa-angle-right" aria-hidden="true"></i>{{this.text}}</li>
-            {{/each}}
+            {{/listFirstThree}}
           </ul>
         </div>
       </div>
