@@ -357,7 +357,8 @@ jQuery(document).ready(function( $ ) {
   });
 
   $('.accordion-container').on('click','.accordion-item-title',function(e){
-    $('.text-label').hide();    
+    e.preventDefault();
+    $('.text-label').hide();
     var accordionItem = $(this).parents('.accordion-item');
     $('.accordion-item').removeClass('on');
     $(accordionItem).addClass('on');
