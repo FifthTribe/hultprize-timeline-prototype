@@ -152,6 +152,7 @@ body {
   border: 1px solid #EC008C;
   padding: 10px;
   z-index: 10000;
+  max-width: 300px;
   background-color: #FFF2FA;
 }
 
