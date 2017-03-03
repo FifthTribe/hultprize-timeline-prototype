@@ -151,8 +151,7 @@ body {
   border-radius: 5px;
   border: 1px solid #EC008C;
   padding: 10px;
-  width: 300px;
-  height: 70px;
+  z-index: 10000;
   background-color: #FFF2FA;
 }
 
