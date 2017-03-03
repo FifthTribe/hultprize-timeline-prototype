@@ -57,7 +57,6 @@ jQuery(document).ready(function( $ ) {
 
   var milestones;
   var circleYears = [];
-  var dotLabel;
   function loadCircles(){
     $.getJSON('milestones.json',function(data){
       milestones = data;
@@ -86,23 +85,6 @@ jQuery(document).ready(function( $ ) {
           easing: fabric.util.ease['easeOutBounce']
         });
       });
-
-      dotLabel = new fabric.Textbox('', {
-        left: -100,
-        top: -100,
-        fill: '#000000',
-        backgroundColor: 'rgb(253, 227, 243)',
-        fontSize: 16,
-        fontFamily: 'Open Sans',
-        originX: 'center',
-        originY: 'center',
-        width:250,
-        textAlign: 'center',
-        cornerSize: 60,
-        cornerStyle: 'circle'
-      });
-      canvas.add(dotLabel);
-      canvas.bringToFront(dotLabel);
 
       for (var i = 0; i < milestones.years.length; i++) {
         var year = milestones.years[i];
@@ -252,7 +234,11 @@ jQuery(document).ready(function( $ ) {
           circleWaves(objs[obj]);
         }
       }
-      e.target.set({'strokeWidth':'2','stroke':'#EC008C','fill': '#FFFFFF'});
+      e.target.set({
+        'strokeWidth':'2',
+        'stroke':'#EC008C',
+        'fill': '#FFFFFF'
+      });
     }
 
     canvas.renderAll();
@@ -298,7 +284,9 @@ jQuery(document).ready(function( $ ) {
 
   canvas.on('mouse:down', function(e) {
     var objs = canvas.getObjects();
-    dotLabel.set({ left: -100, top: -100 });
+
+    $('.text-label').hide();
+
     for (obj in objs){
       if ( objs[obj].isCircle === true ){
         objs[obj].set({
@@ -338,11 +326,7 @@ jQuery(document).ready(function( $ ) {
           }
         }
 
-        dotLabel.set({
-          left: e.target.left + 150,
-          top: e.target.top - 20,
-          text: e.target.text
-        });
+        $('.text-label').html(e.target.text).css('left',e.target.left + 20).css('top',e.target.top - 20).show();
 
       }
 
@@ -369,7 +353,6 @@ jQuery(document).ready(function( $ ) {
         }
       }
     }
-    canvas.bringToFront(dotLabel);
     canvas.renderAll();
   });
 
