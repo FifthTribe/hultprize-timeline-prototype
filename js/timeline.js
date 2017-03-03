@@ -59,6 +59,7 @@ jQuery(document).ready(function( $ ) {
 
   var milestones;
   var circleYears = [];
+  var dotLabel;
   function loadCircles(){
     $.getJSON('milestones.json',function(data){
       milestones = data;
@@ -83,13 +84,18 @@ jQuery(document).ready(function( $ ) {
           duration: 2000,
           onChange: canvas.renderAll.bind(canvas),
           onComplete: function() {
-
-
-
           },
           easing: fabric.util.ease['easeOutBounce']
         });
       });
+
+      dotLabel = new fabric.Text('', {
+        fill: '#fff',
+        fontSize: 16,
+        fontFamily: 'Open Sans',
+        textBackgroundColor: '#002244'
+      });
+      canvas.add(dotLabel);
 
       for (var i = 0; i < milestones.years.length; i++) {
         var year = milestones.years[i];
@@ -285,6 +291,7 @@ jQuery(document).ready(function( $ ) {
 
   canvas.on('mouse:down', function(e) {
     var objs = canvas.getObjects();
+    dotLabel.set({ left: -100, top: -100 });
     for (obj in objs){
       if ( objs[obj].isCircle === true ){
         objs[obj].set({
@@ -318,6 +325,12 @@ jQuery(document).ready(function( $ ) {
             });
           }
         }
+
+        dotLabel.set({
+          left: e.target.left + 50,
+          top: e.target.top + 20,
+          text: e.target.text
+        });
       }
 
       var year = e.target.year;
