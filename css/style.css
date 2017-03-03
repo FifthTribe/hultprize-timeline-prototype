@@ -14,7 +14,7 @@ body {
 
 /* line 15, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion {
-  width: 400px; }
+  width: 500px; }
 
 /* line 19, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-text {
@@ -41,7 +41,7 @@ body {
 
 /* line 44, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .accordion-item-title {
-  background-color: rgba(249, 249, 249, 0.7);
+  background-color: #f9f9f9;
   border-radius: 50px;
   display: block;
   padding: 10px 20px;
@@ -91,10 +91,13 @@ body {
       color: #EC008C;
       padding-right: 10px; }
   /* line 93, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
-  .accordion-text ul li:last-child {
+  .accordion-text ul li:nth-child(3n) {
     border-bottom: none; }
+  /* line 96, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+  .accordion-text ul li:nth-child(n+4) {
+    display: none; }
 
-/* line 99, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+/* line 102, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .animate {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -121,7 +124,7 @@ body {
     -webkit-transform: none;
     transform: none; } }
 
-/* line 132, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
+/* line 135, /Users/AnhLe/Dropbox/Hult Dev/Hult Ring/css/style.scss */
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp; }
