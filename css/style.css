@@ -24,6 +24,10 @@ body {
   display: block;
 }
 
+.accordion {
+  padding-top: 20px;
+}
+
 .accordion .year,
 .accordion .year-title {
   display: inline-block;
