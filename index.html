@@ -25,10 +25,10 @@
   <script id="accordion-template" type="text/x-handlebars-template">
     <div class="accordion">
       {{#each years}}
-      <div class="accordion-item" data-year="{{this.year}}">
+      <div class="accordion-item {{#if @first}}on{{/if}}" data-year="{{this.year}}">
         <a class="accordion-item-title" href="#"><span class="year"><i class="fa fa-bullseye" aria-hidden="true"></i>
 {{this.year}}<span></span><span class="year-title">{{this.title}}</span></a>
-        <div class="accordion-text">
+        <div class="accordion-text {{#if @first}}on{{/if}}">
           <ul class="animation extend">
             {{#listFirstThree this.milestones}}
             <li class="animate fadeInUp"><i class="fa fa-angle-right" aria-hidden="true"></i>{{this.text}}</li>
